@@ -9,6 +9,8 @@ i tried to code a webpage that lets students
 there is also a weekly trends page, however that is a work in progress.
 the idea of that page is to represent the daily expenseses over a week in a bar graph format both cost-wise and category-wise.
 
+DEPLOYMENT LINKKK: https://vikkssss.pythonanywhere.com/
+
 Tech Stack
 - Python 3.12+
 - Flask
