@@ -56,6 +56,12 @@ button:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
+.deletebutton{
+    width: 60%;
+    font-size: 18px;
+    font-weight: 200;
+}
+
 .expense-list {
     width: 100%;
     border-collapse: collapse;
