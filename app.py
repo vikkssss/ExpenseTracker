@@ -37,7 +37,8 @@ def add_expense():
     c = conn.cursor()
     c.execute("SELECT * FROM expenses WHERE date=?  ORDER BY id DESC",(selected_date,))
     expenses = c.fetchall()
-    total_amount = sum(expense['amount'] for expense in expenses)
+    total_amount = sum(float(expense['amount']) for expense in expenses) if expenses else 0.0
+
 
     conn.close()
     return render_template("expensetracker.html",expenses=expenses, selected_date=selected_date,total_amount=total_amount)
