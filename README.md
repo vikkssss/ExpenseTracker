@@ -17,5 +17,18 @@ Tech Stack
 - Chart.js
 - Flatpickr for date selection
 
+  Setup:
+- clone this repository using
+  git clone https://github.com/vikkssss/ExpenseTracker
+
+  -install the dependencies from requirements.txt
+  pip install -r requirements.txt
+
+  -then run
+  python database.py
+  python app.py
+
+  Open your browser and go to: http://localhost:5000
+
   
 Thank you :)
