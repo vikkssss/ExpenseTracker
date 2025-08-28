@@ -5,7 +5,8 @@ i tried to code a webpage that lets students
 
 -  click on a date to check the amount youve spent that day viusalised with a pie chart and a table
 -  view, add and delete expenses for a particular date
-  
+
+(UPDATED WEEKLY TRENDS PAGE!)
 the weekly trends page displays the most recent week's analysis using a stacked bar graph for representing relative spending from categories.
 
 DEPLOYMENT LINKKK: https://vikkssss.pythonanywhere.com/
