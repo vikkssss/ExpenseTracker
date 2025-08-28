@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, url_for, redirect
 import sqlite3
 from database import create_db
+from datetime import datetime, timedelta
+
 app= Flask(__name__)
 
 create_db()
@@ -47,7 +49,45 @@ def add_expense():
     
 @app.route("/week")
 def weekly_trends():
-    return render_template("weeklyanalytics.html")
+
+    today = datetime.today()
+    last_monday = today - timedelta(days=today.weekday())
+    start_date = last_monday.date().isoformat()
+
+    conn = sqlite3.connect("expenses.db")
+    conn.row_factory=sqlite3.Row
+    c=conn.cursor()
+
+    c.execute("SELECT * FROM expenses WHERE date >= ?", (start_date,))
+    expenses = c.fetchall()
+    conn.close()
+    
+    daily_totals = {}
+    category_totals = {}
+
+    for e in expenses:
+        date = e['date']
+        category = e['category']
+        try:
+            amount = float(e['amount'])
+        except (ValueError, TypeError):
+            amount = 0.0
+
+        if date not in daily_totals:
+            daily_totals[date] = {}
+
+        daily_totals[date][category] = daily_totals[date].get(category, 0) + amount
+        category_totals[category] = category_totals.get(category, 0) + amount
+
+    
+
+
+
+    return render_template("weeklyanalytics.html",daily_totals=daily_totals,
+        category_totals=category_totals,
+        expenses=[dict(e) for e in expenses]
+        )
+
 
 @app.route("/delete/<int:expense_id>", methods=["POST"])
 def delete_expense(expense_id):
