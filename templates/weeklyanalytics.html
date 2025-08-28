@@ -3,26 +3,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
     <title> WEEKLY ANALYTICS</title>
-    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
    
 </head>
 <body>
-    <div>
-        i didnt have time to complete this :[
-        <p>
-            its supposed to have a bar graph comparing all the daily money spent per week both day-wise and category-wise
-        </p>
-        <p>
-            please check out daily tracker 
-        </p>
+    <h1>this week's analysis</h1>
+    <p>your weekly expenses, visualised</p>
+    <div style="display:none;" id="expenses-data">
+       {{ {'daily_totals': daily_totals, 'category_totals': category_totals, 'expenses': expenses} | tojson | safe }}
     </div>
+    <div class="chart-container">
+        <canvas id="weeklyChart"></canvas>
+    </div>
+
+    <script src="{{ url_for('static', filename='scriptw.js') }}"></script>
+
 </body>
+
 <footer>
     <p>this page is still under development</p>
     copyrightie  &#169; veeks
 </footer>
-
 </html>
